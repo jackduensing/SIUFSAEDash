@@ -13,7 +13,7 @@ def run(mem_name, type):
     #creates an array that mirrors the shared memory
     name = np.ndarray(shape=(1,), dtype=type, buffer=data.buf)
 
-    name['RPM'] = 3500.00
+    name['RPM'] = 5000.00
 
     #configuring can module in config.txt with pins and stuff
     #using the adafruit_mcp2515 library to capture CAN
