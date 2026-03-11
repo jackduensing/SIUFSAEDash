@@ -24,17 +24,19 @@ Vehicle Speed           #not able
 GPS Coordinates         #not able
 '''
 
+#names from dbc file
+
 car_data_type = np.dtype([
     ('runtime', np.float32),   #runtime in seconds 
-    ('RPM', np.float32),   #RPM
-    ('clt_temp', np.float32),   #Coolant Temp
+    ('rpm', np.float32),   #RPM
+    ('clt', np.float32),   #Coolant Temp
     ('map', np.float32),   #MAP
     ('mat', np.float32),   #MAT
-    ('throttle_pos', np.float32),   #Throttle Pos
-    ('sprk_adv', np.float32),   #Spark Advance
-    ('afr_trgt', np.float32),   #AFR target
-    ('afr', np.float32),   #AFR
-    ('batt_v', np.float32),   #Battery Voltage
+    ('tps', np.float32),   #Throttle Pos
+    ('adv_deg', np.float32),   #Spark Advance
+    ('afrtgt1', np.float32),   #AFR target
+    ('AFR1', np.float32),   #AFR
+    ('batt', np.float32),   #Battery Voltage
     ('timestamp', np.float64)
 ])
 
