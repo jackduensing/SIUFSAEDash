@@ -66,7 +66,9 @@ shared_container = shared_memory.SharedMemory(name = mem_name)
 data = np.ndarray(shape=(1,), dtype=type, buffer=shared_container.buf)
 
 then can access with name[field]
-ex:     #data['RPM'] = 5000.00
+ex:     #data['RPM'] = 5000.00'
+assignment to vars with
+ex:     #rpm = data['RPM'][0]
 after locking to prevent race
 '''
 
