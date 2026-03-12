@@ -18,4 +18,3 @@ def run(mem_name, type):
     rpm = data['RPM'][0]
 
     print( f"RPM = {data['RPM'][0]}" )
-

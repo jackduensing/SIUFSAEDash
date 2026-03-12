@@ -3,10 +3,10 @@ from multiprocessing import shared_memory, Process, Lock
 import numpy as np
 import time
 
-import can
-import gui
-import log
-import lora
+import canDash
+import guiDash
+import logDash
+import loraDash
 
 #names from dbc file
 
@@ -34,10 +34,10 @@ data['start_time'] = time.monotonic()       #starts the timestampign process, NO
 
 lock = Lock()
 
-can = Process(target=can.run, args=(mem_name, car_data_type, lock))
-gui = Process(target=gui.run, args=(mem_name, car_data_type, lock))
-#log = Process(target=log.run, args=(mem_name, car_data_type, lock))
-#lora = Process(target=lora.run, args=(mem_name, car_data_type, lock))
+can = Process(target=canDash.run, args=(mem_name, car_data_type, lock))
+gui = Process(target=guiDash.run, args=(mem_name, car_data_type, lock))
+#log = Process(target=logDash.run, args=(mem_name, car_data_type, lock))
+#lora = Process(target=loraDash.run, args=(mem_name, car_data_type, lock))
 
 can.start()
 gui.start()
