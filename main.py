@@ -11,6 +11,7 @@ import loraDash
 #names from dbc file
 
 car_data_type = np.dtype([
+    ('timestamp', np.float64),
     ('start_time', np.float32),   #holder for timestamping
     ('rpm', np.float32),   #RPM
     ('clt', np.float32),   #Coolant Temp
@@ -20,8 +21,7 @@ car_data_type = np.dtype([
     ('adv_deg', np.float32),   #Spark Advance
     ('afrtgt1', np.float32),   #AFR target
     ('AFR1', np.float32),   #AFR
-    ('batt', np.float32),   #Battery Voltage
-    ('timestamp', np.float64)
+    ('batt', np.float32)   #Battery Voltage
 ])
 
 mem_name = 'car_data'

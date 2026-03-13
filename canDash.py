@@ -40,7 +40,8 @@ def run(mem_name, type, lock):
             continue
 
         except Exception as e:
-            #log error
+            with open("log.txt", "a") as file:
+                print(f"{e}\n", file=file)
             break
 
     shared_container.close()
