@@ -1,11 +1,11 @@
 from multiprocessing import shared_memory
 import numpy as np
+import pandas as pd
 import time
 import can
 import os
 
 def run(mem_name, type, lock):
-    print(f"From process GUI, recieved {mem_name}")
 
     #attaches to shared memory
     shared_container = shared_memory.SharedMemory(name = mem_name)
@@ -13,11 +13,21 @@ def run(mem_name, type, lock):
     #creates an array that mirrors the shared memory
     data = np.ndarray(shape=(1,), dtype=type, buffer=shared_container.buf)
 
-    time.sleep(3)
+    while True:
 
-    rpm = data['RPM'][0]
+        try:
 
-    print( f"RPM = {data['RPM'][0]}" )
+            time.sleep(5)
+
+            with lock:
+                data = pd.Dataframe(data)
+        
+            print(data)
+
+        except Exception as e:
+            with open("log.txt", "a") as file:
+                print(f"{e}\n", file=file)
+            break
 
 
     shared_container.close()

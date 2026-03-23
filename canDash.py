@@ -9,8 +9,6 @@ def run(mem_name, type, lock):
 
     fields = ("runtime", 'rpm', 'clt', 'map', 'mat', 'tps', 'adv_deg', 'afttgt1', 'AFR1', 'batt')
 
-    print(f"From process can, recieved {mem_name}")
-
     #attaches to shared memory
     shared_container = shared_memory.SharedMemory(name = mem_name)
 
@@ -32,7 +30,7 @@ def run(mem_name, type, lock):
 
                 for key, value in decoded_data:
                     if key in fields:
-                        with lock:                                                             
+                        with lock:                                                
                             value == data[key]
                             data["timestamp"] = time.monotonic() - data["start_time"]       #uses the start_time field to create a "time since start"
                         

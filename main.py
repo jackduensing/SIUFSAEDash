@@ -34,22 +34,22 @@ data['start_time'] = time.monotonic()       #starts the timestampign process, NO
 
 lock = Lock()
 
-can = Process(target=canDash.run, args=(mem_name, car_data_type, lock))
-gui = Process(target=guiDash.run, args=(mem_name, car_data_type, lock))
-#log = Process(target=logDash.run, args=(mem_name, car_data_type, lock))
-#lora = Process(target=loraDash.run, args=(mem_name, car_data_type, lock))
+canDash = Process(target=canDash.run, args=(mem_name, car_data_type, lock))
+guiDash = Process(target=guiDash.run, args=(mem_name, car_data_type, lock))
+#logDash = Process(target=logDash.run, args=(mem_name, car_data_type, lock))
+#loraDash = Process(target=loraDash.run, args=(mem_name, car_data_type, lock))
 
-can.start()
-gui.start()
-#log.start()
-#lora.start()
+canDash.start()
+guiDash.start()
+#logDash.start()
+#loraDash.start()
 
 
 
-can.join()
-gui.join()
-#log.join()
-#lora.join()
+canDash.join()
+guiDash.join()
+#logDash.join()
+#loraDash.join()
 
 
 
