@@ -19,7 +19,7 @@ def run(mem_name, type, lock):
     while True:
         time.sleep(2)       #every 2 seconds, log
         with lock: 
-            toSave = pd.Dataframe(data)
+            toSave = pd.DataFrame(data)
 
         if os.path.exists(file_path):
             try:

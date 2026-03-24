@@ -22,7 +22,7 @@ def run(mem_name, type, lock):
             time.sleep(5)
 
             with lock:
-                data = pd.Dataframe(data)
+                data = pd.DataFrame(data)
         
             print(data)
 

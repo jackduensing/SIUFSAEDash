@@ -21,6 +21,7 @@ def run(mem_name, type, lock):
     db = cantools.database.load_file("MS3.dbc")
 
     while True:
+        print("In main CAN loop")
         try:
 
             message = bus.recv()
