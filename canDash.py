@@ -7,6 +7,8 @@ import cantools
 
 def run(mem_name, type, lock):
 
+    print("Starting CAN")
+
     fields = ("runtime", 'rpm', 'clt', 'map', 'mat', 'tps', 'adv_deg', 'afttgt1', 'AFR1', 'batt')
 
     #attaches to shared memory

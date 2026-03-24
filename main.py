@@ -39,13 +39,15 @@ guiDash = Process(target=guiDash.run, args=(mem_name, car_data_type, lock))
 #logDash = Process(target=logDash.run, args=(mem_name, car_data_type, lock))
 #loraDash = Process(target=loraDash.run, args=(mem_name, car_data_type, lock))
 
+
+print("Starting Processes")
 canDash.start()
 guiDash.start()
 #logDash.start()
 #loraDash.start()
 
 
-
+print("Joining Processes")
 canDash.join()
 guiDash.join()
 #logDash.join()

@@ -7,6 +7,8 @@ import os
 
 def run(mem_name, type, lock):
 
+    print("Starting GUI")
+
     #attaches to shared memory
     shared_container = shared_memory.SharedMemory(name = mem_name)
 
