@@ -39,6 +39,5 @@ def run(mem_name, type, lock):
     
 
     shared_container.close()
-    shared_container.unlink()
 
     
