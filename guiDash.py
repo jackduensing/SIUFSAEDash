@@ -31,5 +31,8 @@ def run(mem_name, type, lock):
                 print(f"{e}\n", file=file)
             break
 
+        except KeyboardInterrupt:
+            break
+
 
     shared_container.close()

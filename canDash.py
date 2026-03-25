@@ -24,11 +24,14 @@ def run(mem_name, type, lock):
         print("In main CAN loop")
         try:
 
+            print("waiting for message...")
             message = bus.recv()
             if message == None:     #returns none or message, if no message, skip
+                print("message returned none type")
                 continue
 
             else:
+                print(f"recieved message {message}")
                 decoded_data = db.decode_message(message.arbitration_id, message.data)
 
                 for key, value in decoded_data:
@@ -43,6 +46,9 @@ def run(mem_name, type, lock):
         except Exception as e:
             with open("log.txt", "a") as file:
                 print(f"{e}\n", file=file)
+            break
+
+        except KeyboardInterrupt:
             break
 
     shared_container.close()

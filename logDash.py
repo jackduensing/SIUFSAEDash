@@ -28,12 +28,16 @@ def run(mem_name, type, lock):
                 with open("log.txt", "a") as file:
                     print(f"{e}\n", file=file)
                 break
+            except KeyboardInterrupt:
+                break
         else:
             try:
                 toSave.to_csv(file_path, mode='a', index=False, header=True)     #if the file does not exist in the drive, append with the column names
             except Exception as e:
                 with open("log.txt", "a") as file:
                     print(f"{e}\n", file=file)
+                break
+            except KeyboardInterrupt:
                 break
 
     shared_container.close()

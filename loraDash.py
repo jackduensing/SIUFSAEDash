@@ -35,6 +35,9 @@ def run(mem_name, type, lock):
                 with open("log.txt", "a") as file:
                     print(f"{e}\n", file=file)
                 break
+            
+            except KeyboardInterrupt:
+                break
 
     
 

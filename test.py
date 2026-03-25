@@ -19,4 +19,7 @@ data = msg_obj.encode({
 
 message = can.Message(arbitration_id=msg_obj.frame_id, data=data)
 
-print(message)
+
+print(hex(message.arbitration_id))
+print(data)
+
