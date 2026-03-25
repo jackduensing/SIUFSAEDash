@@ -25,7 +25,8 @@ def run(mem_name, type, lock):
         try:
 
             print("waiting for message...")
-            message = bus.recv()
+            for message in bus:
+                print(message)
             if message == None:     #returns none or message, if no message, skip
                 print("message returned none type")
                 continue
