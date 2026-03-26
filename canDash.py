@@ -44,12 +44,12 @@ def run(mem_name, type, lock):
         except cantools.database.DecodeError:       #frame is not in dbc file, continue
             continue
 
+        except KeyboardInterrupt:
+            break
+
         except Exception as e:
             with open("log.txt", "a") as file:
                 print(f"{e}\n", file=file)
-            break
-
-        except KeyboardInterrupt:
             break
 
     shared_container.close()
