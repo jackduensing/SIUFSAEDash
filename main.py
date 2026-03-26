@@ -52,7 +52,7 @@ try:
     guiDash.join()
     #logDash.join()
     #loraDash.join()
-except:
+except KeyboardInterrupt:
     canDash.terminate()
     guiDash.terminate()
     #logDash.terminate()
