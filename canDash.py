@@ -33,7 +33,6 @@ def run(mem_name, car_type, lock):
             else:
                 print(f"recieved message {message}")
                 decoded_data = db.decode_message(message.arbitration_id, message.data)
-                print(f"decoded data: {decoded_data} of type {type(decoded_data)}")
 
                 for key, value in decoded_data.items():
                     print(f"{key}:{value}")
