@@ -22,7 +22,7 @@ def run(mem_name, car_type, lock):
             time.sleep(5)
 
             with lock:
-                to_print = pd.DataFrame(data)
+                to_print = pd.DataFrame(data.copy())
         
             print(to_print)
 

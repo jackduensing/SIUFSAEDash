@@ -47,11 +47,21 @@ guiDash.start()
 #loraDash.start()
 
 
-print("Joining Processes")
-canDash.join()
-guiDash.join()
-#logDash.join()
-#loraDash.join()
+try:
+    canDash.join()
+    guiDash.join()
+    #logDash.join()
+    #loraDash.join()
+except:
+    canDash.terminate()
+    guiDash.terminate()
+    #logDash.terminate()
+    #loraDash.terminate()
+    canDash.join()
+    guiDash.join()
+    #logDash.join()
+    #loraDash.join()
+
 
 
 
