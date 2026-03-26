@@ -39,7 +39,9 @@ def run(mem_name, car_type, lock):
                             data[0][key] = value
                             data["timestamp"] = time.monotonic() - data["start_time"]       #uses the start_time field to create a "time since start"
                         
-        except cantools.database.DecodeError:       #frame is not in dbc file, continue
+        except cantools.database.DecodeError as e: #frame is not in dbc file, continue, log
+            with open("log.txt", "a") as file:
+                print(f"{e}\n", file=file)       
             continue
 
         except KeyboardInterrupt:
