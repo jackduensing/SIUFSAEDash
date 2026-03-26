@@ -21,7 +21,6 @@ def run(mem_name, car_type, lock):
     db = cantools.database.load_file("MS3.dbc")
 
     while True:
-        print("In main CAN loop")
         try:
 
             print("waiting for message...")
@@ -31,15 +30,11 @@ def run(mem_name, car_type, lock):
                 continue
 
             else:
-                print(f"recieved message {message}")
                 decoded_data = db.decode_message(message.arbitration_id, message.data)
 
                 for key, value in decoded_data.items():
-                    print(f"{key}:{value}")
                     if key in fields:
-                        print(f"{key}")
-                        with lock:
-                            print(f"{value}")                                                
+                        with lock:                                               
                             data[key] = value
                             data["timestamp"] = time.monotonic() - data["start_time"]       #uses the start_time field to create a "time since start"
                         
