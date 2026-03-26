@@ -35,13 +35,13 @@ def run(mem_name, car_type, lock):
                 decoded_data = db.decode_message(message.arbitration_id, message.data)
                 print(f"decoded data: {decoded_data} of type {type(decoded_data)}")
 
-                for key, value in decoded_data:
+                for key, value in decoded_data.items():
                     print(f"{key}:{value}")
                     if key in fields:
                         print(f"{key}")
                         with lock:
                             print(f"{value}")                                                
-                            value == data[key]
+                            data[key] = value
                             data["timestamp"] = time.monotonic() - data["start_time"]       #uses the start_time field to create a "time since start"
                         
         except cantools.database.DecodeError:       #frame is not in dbc file, continue
