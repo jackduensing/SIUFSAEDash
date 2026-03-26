@@ -36,8 +36,11 @@ def run(mem_name, type, lock):
                 print(f"decoded data: {decoded_data}")
 
                 for key, value in decoded_data:
+                    print(f"{key}:{value}")
                     if key in fields:
-                        with lock:                                                
+                        print(f"{key}")
+                        with lock:
+                            print(f"{value}")                                                
                             value == data[key]
                             data["timestamp"] = time.monotonic() - data["start_time"]       #uses the start_time field to create a "time since start"
                         
