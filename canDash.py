@@ -27,11 +27,11 @@ def run(mem_name, type, lock):
             print("waiting for message...")
             message = bus.recv()
             if message == None:     #returns none or message, if no message, skip
-                print("message returned none type")
+                print(f"message returned none type")
                 continue
 
             else:
-                print("recieved message {message}")
+                print(f"recieved message {message}")
                 decoded_data = db.decode_message(message.arbitration_id, message.data)
 
                 for key, value in decoded_data:
