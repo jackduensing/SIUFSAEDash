@@ -5,7 +5,7 @@ import can
 import os
 import cantools
 
-def run(mem_name, type, lock):
+def run(mem_name, car_type, lock):
 
     print("Starting CAN")
 
@@ -15,7 +15,7 @@ def run(mem_name, type, lock):
     shared_container = shared_memory.SharedMemory(name = mem_name)
 
     #creates an array that mirrors the shared memory
-    data = np.ndarray(shape=(1,), dtype=type, buffer=shared_container.buf)
+    data = np.ndarray(shape=(1,), dtype=car_type, buffer=shared_container.buf)
     
     bus = can.Bus(channel="can0", interface="socketcan", bitrate=500000)
     db = cantools.database.load_file("MS3.dbc")
@@ -33,8 +33,7 @@ def run(mem_name, type, lock):
             else:
                 print(f"recieved message {message}")
                 decoded_data = db.decode_message(message.arbitration_id, message.data)
-                data_type = type(decoded_data)
-                print(f"decoded data: {decoded_data} of type {data_type}")
+                print(f"decoded data: {decoded_data} of type {type(decoded_data)}")
 
                 for key, value in decoded_data:
                     print(f"{key}:{value}")

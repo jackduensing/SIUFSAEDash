@@ -5,7 +5,7 @@ import time
 import can
 import os
 
-def run(mem_name, type, lock):
+def run(mem_name, car_type, lock):
 
     print("Starting GUI")
 
@@ -13,7 +13,7 @@ def run(mem_name, type, lock):
     shared_container = shared_memory.SharedMemory(name = mem_name)
 
     #creates an array that mirrors the shared memory
-    data = np.ndarray(shape=(1,), dtype=type, buffer=shared_container.buf)
+    data = np.ndarray(shape=(1,), dtype=car_type, buffer=shared_container.buf)
 
     while True:
 

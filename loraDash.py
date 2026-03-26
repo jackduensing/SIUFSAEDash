@@ -7,14 +7,14 @@ import digitalio
 import adafruit_rfm9x
 import time
 
-def run(mem_name, type, lock):
+def run(mem_name, car_type, lock):
     print(f"From process lora, recieved {mem_name}")
 
     #attaches to shared memory
     shared_container = shared_memory.SharedMemory(name = mem_name)
 
     #creates an array that mirrors the shared memory
-    data = np.ndarray(shape=(1,), dtype=type, buffer=shared_container.buf)
+    data = np.ndarray(shape=(1,), dtype=car_type, buffer=shared_container.buf)
 
     cs = digitalio.DigitalInOut(board.D18)
     reset = digitalio.DigitalInOut(board.D25)

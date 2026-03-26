@@ -4,14 +4,14 @@ import numpy as np
 import pandas as pd
 import os
 
-def run(mem_name, type, lock):
+def run(mem_name, car_type, lock):
     print(f"From process log, recieved {mem_name}")
 
     #attaches to shared memory
     shared_container = shared_memory.SharedMemory(name = mem_name)
 
     #creates an array that mirrors the shared memory
-    data = np.ndarray(shape=(1,), dtype=type, buffer=shared_container.buf)
+    data = np.ndarray(shape=(1,), dtype=car_type, buffer=shared_container.buf)
 
     #todo: once I have the flashdrive, create a permanent mount point
     file_path = "dummy\path\to\drive"
