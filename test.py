@@ -19,7 +19,11 @@ data = msg_obj.encode({
 
 message = can.Message(arbitration_id=msg_obj.frame_id, data=data)
 
+data = str(data)
 
-print(hex(message.arbitration_id))
-print(data)
+data = data[1:].replace("\\", "").replace("x", "",).replace("'", "")
+
+id = str(hex(message.arbitration_id)).replace("x", "")
+
+print(f"cansend can0 {id[1:]}#{data}")
 

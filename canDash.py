@@ -34,7 +34,8 @@ def run(mem_name, car_type, lock):
 
                 for key, value in decoded_data.items():
                     if key in fields:
-                        with lock:                                               
+                        with lock:   
+                            print(f"{key}:{value}")                                            
                             data[key] = value
                             data["timestamp"] = time.monotonic() - data["start_time"]       #uses the start_time field to create a "time since start"
                         
