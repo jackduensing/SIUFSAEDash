@@ -22,9 +22,9 @@ def run(mem_name, car_type, lock):
             time.sleep(5)
 
             with lock:
-                data = pd.DataFrame(data)
+                to_print = pd.DataFrame(data)
         
-            print(data)
+            print(to_print)
 
         except Exception as e:
             with open("log.txt", "a") as file:

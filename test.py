@@ -11,7 +11,7 @@ db = cantools.database.load_file("MS3.dbc")
 msg_obj = db.get_message_by_name("megasquirt_dash0")
 
 data = msg_obj.encode({
-    "rpm": 5000,
+    "rpm": 3500,
     "clt": 225,
     "map": 0,
     "tps": 0
