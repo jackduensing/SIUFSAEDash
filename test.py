@@ -1,3 +1,4 @@
+import subprocess
 import numpy as np
 import time
 import can
@@ -22,5 +23,8 @@ message = can.Message(arbitration_id=msg_obj.frame_id, data=data)
 data_hex = ''.join(f'{b:02X}' for b in data)
 id_hex = f'{message.arbitration_id:03X}'
 
-print(f"cansend can0 {id_hex}#{data_hex}")
+command  = "cansend can0 " + id_hex + "#" + data_hex
+
+print(command)
+
 
