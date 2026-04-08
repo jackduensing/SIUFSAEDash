@@ -9,13 +9,13 @@ fields = ("runtime", 'rpm', 'clt', 'map', 'mat', 'tps', 'adv_deg', 'afttgt1', 'A
 
 db = cantools.database.load_file("MS3.dbc")
 
-msg_obj = db.get_message_by_name("megasquirt_dash0")
+msg_obj = db.get_message_by_name("megasquirt_gp0")
 
 data = msg_obj.encode({
     "rpm": 3500,
-    "clt": 225,
-    "map": 0,
-    "tps": 0
+    "pw2": 0,
+    "pw1": 0,
+    "seconds": 0
 })
 
 message = can.Message(arbitration_id=msg_obj.frame_id, data=data)

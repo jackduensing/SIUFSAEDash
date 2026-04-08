@@ -65,7 +65,7 @@ class Backend(QObject):
         if abs(rpm - self._last_rpm) > 1e-3:
             self._last_rpm = rpm
             self._rpm = rpm
-            self.RPMChanged.emit(int(rpm))
+            self.rpmChanged.emit(int(rpm))
 
         if abs(clt - self._last_clt) > 1e-3:
             self._last_clt = clt
