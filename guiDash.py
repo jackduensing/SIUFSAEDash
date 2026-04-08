@@ -49,6 +49,9 @@ class Backend(QObject):
         self._timer.timeout.connect(self._poll)
         self._timer.start(100)
 
+    def _changed(a, b, epsilon=1e-3):
+            return abs(a - b) > epsilon
+
     def _poll(self):
         with self._lock:
             rpm = self._data[0]["rpm"]
@@ -62,58 +65,56 @@ class Backend(QObject):
             batt = self._data[0]["batt"]
             gear = self._data[0]["gear"]
 
-        if changed(rpm, self._last_rpm):
+        if self._changed(rpm, self._last_rpm):
             self._last_rpm = rpm
             self._rpm = rpm
             self.RPMChanged.emit(int(rpm))
 
-        if changed(clt, self._last_clt):
+        if self._changed(clt, self._last_clt):
             self._last_clt = clt
             self._clt = clt
             self.cltChanged.emit(int(clt))
 
-        if changed(map_, self._last_map):
+        if self._changed(map_, self._last_map):
             self._last_map = map_
             self._map = map_
             self.mapChanged.emit(int(map_))
 
-        if changed(mat, self._last_mat):
+        if self._changed(mat, self._last_mat):
             self._last_mat = mat
             self._mat = mat
             self.matChanged.emit(int(mat))
 
-        if changed(tps, self._last_tps):
+        if self._changed(tps, self._last_tps):
             self._last_tps = tps
             self._tps = tps
             self.tpsChanged.emit(int(tps))
 
-        if changed(adv_deg, self._last_adv_deg):
+        if self._changed(adv_deg, self._last_adv_deg):
             self._last_adv_deg = adv_deg
             self._adv_deg = adv_deg
             self.adv_degChanged.emit(int(adv_deg))
 
-        if changed(afrtgt1, self._last_afrtgt1):
+        if self._changed(afrtgt1, self._last_afrtgt1):
             self._last_afrtgt1 = afrtgt1
             self._afrtgt1 = afrtgt1
             self.afrtgt1Changed.emit(int(afrtgt1))
 
-        if changed(afr, self._last_afr):
+        if self._changed(afr, self._last_afr):
             self._last_afr = afr
             self._afr = afr
             self.afrChanged.emit(int(afr))
 
-        if changed(batt, self._last_batt):
+        if self._changed(batt, self._last_batt):
             self._last_batt = batt
             self._batt = batt
             self.battChanged.emit(batt)
 
-        if changed(gear, self._last_gear):
+        if self._changed(gear, self._last_gear):
             self._last_gear = gear
             self._gear = gear
             self.gearChanged.emit(int(gear))
 
-        def changed(a, b, epsilon=1e-3):
-            return abs(a - b) > epsilon
 
     @pyqtProperty(int, notify=rpmChanged)
     def rpm(self):
