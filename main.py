@@ -21,7 +21,8 @@ car_data_type = np.dtype([
     ('adv_deg', np.float32),   #Spark Advance
     ('afrtgt1', np.float32),   #AFR target
     ('AFR1', np.float32),   #AFR
-    ('batt', np.float32)   #Battery Voltage
+    ('batt', np.float32),   #Battery Voltage
+    ('gear', np.int32)    #gear indicator
 ])
 
 mem_name = 'car_data'
