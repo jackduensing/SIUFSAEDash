@@ -21,8 +21,8 @@ Window{
         anchors.fill: parent
         spacing: 0
         rotation: 90
-        width: parent.height
-        height: parent.width
+        width: Screen.height
+        height: Screen.width
 
         //rpm bar
         RowLayout{
