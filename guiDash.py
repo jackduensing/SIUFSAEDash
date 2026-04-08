@@ -105,7 +105,7 @@ class Backend(QObject):
         if abs(batt - self._last_batt) > 1e-3:
             self._last_batt = batt
             self._batt = batt
-            self.battChanged.emit(batt)
+            self.battChanged.emit(int(batt))
 
         if abs(gear - self._last_gear) > 1e-3:
             self._last_gear = gear
