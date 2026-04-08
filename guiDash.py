@@ -113,7 +113,7 @@ class Backend(QObject):
             self.gearChanged.emit(int(gear))
 
 
-    @pyqtProperty(int - notify=rpmChanged)
+    @pyqtProperty(int, notify=rpmChanged)
     def rpm(self):
         return self._rpm
     
