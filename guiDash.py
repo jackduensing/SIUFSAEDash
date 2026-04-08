@@ -69,48 +69,48 @@ class Backend(QObject):
 
         if abs(clt - self._last_clt) > 1e-3:
             self._last_clt = clt
-            self._clt = clt
-            self.cltChanged.emit(int(clt))
+            self._clt = int(round(clt))
+            self.cltChanged.emit(clt)
 
         if abs(map_ - self._last_map) > 1e-3:
             self._last_map = map_
-            self._map = map_
-            self.mapChanged.emit(int(map_))
+            self._map = int(round(map_))
+            self.mapChanged.emit(map_)
 
         if abs(mat - self._last_mat) > 1e-3:
             self._last_mat = mat
-            self._mat = mat
-            self.matChanged.emit(int(mat))
+            self._mat = int(round(mat))
+            self.matChanged.emit(mat)
 
         if abs(tps - self._last_tps) > 1e-3:
             self._last_tps = tps
-            self._tps = tps
-            self.tpsChanged.emit(int(tps))
+            self._tps = int(round(tps))
+            self.tpsChanged.emit(tps)
 
         if abs(adv_deg - self._last_adv_deg) > 1e-3:
             self._last_adv_deg = adv_deg
-            self._adv_deg = adv_deg
-            self.adv_degChanged.emit(int(adv_deg))
+            self._adv_deg = int(round(adv_deg))
+            self.adv_degChanged.emit(adv_deg)
 
         if abs(afrtgt1 - self._last_afrtgt1) > 1e-3:
             self._last_afrtgt1 = afrtgt1
-            self._afrtgt1 = afrtgt1
-            self.afrtgt1Changed.emit(int(afrtgt1))
+            self._afrtgt1 = int(round(afrtgt1))
+            self.afrtgt1Changed.emit(afrtgt1)
 
         if abs(afr - self._last_afr) > 1e-3:
             self._last_afr = afr
-            self._afr = afr
-            self.afrChanged.emit(int(afr))
+            self._afr = int(round(afr))
+            self.afrChanged.emit(afr)
 
         if abs(batt - self._last_batt) > 1e-3:
             self._last_batt = batt
-            self._batt = batt
+            self._batt = int(round(batt))
             self.battChanged.emit(batt)
 
         if abs(gear - self._last_gear) > 1e-3:
             self._last_gear = gear
-            self._gear = gear
-            self.gearChanged.emit(int(gear))
+            self._gear = int(round(gear))
+            self.gearChanged.emit(gear)
 
 
     @pyqtProperty(int, notify=rpmChanged)
