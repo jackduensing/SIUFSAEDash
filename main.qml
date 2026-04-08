@@ -20,9 +20,6 @@ Window{
     ColumnLayout{
         anchors.fill: parent
         spacing: 0
-        rotation: 90
-        width: Screen.height
-        height: Screen.width
 
         //rpm bar
         RowLayout{
