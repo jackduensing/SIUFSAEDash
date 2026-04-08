@@ -8,7 +8,7 @@ Window{
     id: root
     visible: true
     visibility: Window.FullScreen
-    title: "Test"
+    title: "GUI"
 
     Timer{
         interval: 1000
@@ -20,6 +20,9 @@ Window{
     ColumnLayout{
         anchors.fill: parent
         spacing: 0
+        rotation: 90
+        width: parent.height
+        height: parent.width
 
         //rpm bar
         RowLayout{
