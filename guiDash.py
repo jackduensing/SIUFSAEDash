@@ -51,16 +51,16 @@ class Backend(QObject):
 
     def _poll(self):
         with self._lock:
-            rpm = self._data[0]["rpm"]
-            clt = self._data[0]["clt"]
-            map_ = self._data[0]["map"]
-            mat = self._data[0]["mat"]
-            tps = self._data[0]["tps"]
-            adv_deg = self._data[0]["adv_deg"]
-            afrtgt1 = self._data[0]["afrtgt1"]
-            afr = self._data[0]["AFR1"]
-            batt = self._data[0]["batt"]
-            gear = self._data[0]["gear"]
+            rpm = float(self._data[0]["rpm"])
+            clt = float(self._data[0]["clt"])
+            map_ = float(self._data[0]["map"])
+            mat = float(self._data[0]["mat"])
+            tps = float(self._data[0]["tps"])
+            adv_deg = float(self._data[0]["adv_deg"])
+            afrtgt1 = float(self._data[0]["afrtgt1"])
+            afr = float(self._data[0]["AFR1"])
+            batt = float(self._data[0]["batt"])
+            gear = float(self._data[0]["gear"])
 
         if abs(rpm - self._last_rpm) > 1e-3:
             self._last_rpm = rpm
@@ -105,7 +105,7 @@ class Backend(QObject):
         if abs(batt - self._last_batt) > 1e-3:
             self._last_batt = batt
             self._batt = batt
-            self.battChanged.emit(int(batt))
+            self.battChanged.emit(batt)
 
         if abs(gear - self._last_gear) > 1e-3:
             self._last_gear = gear
