@@ -11,6 +11,10 @@ db = cantools.database.load_file("MS3.dbc")
 
 msg_obj = db.get_message_by_name("megasquirt_gp0")
 
+print(f"!#/bin/bash")
+
+print("echo Starting test...")
+
 for n in range(0, 12500, 500):
     data = msg_obj.encode({
     "rpm": n,
@@ -26,7 +30,7 @@ for n in range(0, 12500, 500):
 
     command  = "cansend can0 " + id_hex + "#" + data_hex
 
-    print("sleep 1")
+    print("sleep 0.125")
     print(command)
 
 

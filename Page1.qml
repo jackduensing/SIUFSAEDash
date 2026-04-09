@@ -37,88 +37,88 @@ Item{
 
                 Rectangle{
                     id: rpm2
-                    color: backend.rpm > 1000 ? "green" : "white"
+                    color: backend.rpm >= 1000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm3
-                    color: backend.rpm > 2000 ? "green" : "white"
+                    color: backend.rpm >= 2000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm4
-                    color: backend.rpm > 3000 ? "green" : "white"
+                    color: backend.rpm >= 3000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm5
-                    color: backend.rpm > 4000 ? "green" : "white"
+                    color: backend.rpm >= 4000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm6
-                    color: backend.rpm > 5000 ? "green" : "white"
+                    color: backend.rpm >= 5000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm7
-                    color: backend.rpm > 6000 ? "green" : "white"
+                    color: backend.rpm >= 6000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm8
-                    color: backend.rpm > 7000 ? "green" : "white"
+                    color: backend.rpm >= 7000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm9
-                    color: backend.rpm > 8000 ? "green" : "white"
+                    color: backend.rpm >= 8000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm10
-                    color: backend.rpm > 9000 ? "green" : "white"
+                    color: backend.rpm >= 9000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm11
-                    color: backend.rpm > 10000 ? "green" : "white"
+                    color: backend.rpm >= 10000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm12
-                    color: backend.rpm > 11000 ? "green" : "white"
+                    color: backend.rpm >= 11000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
 
                 Rectangle{
                     id: rpm13
-                    color: backend.rpm > 12000 ? "green" : "white"
+                    color: backend.rpm >= 12000 ? "green" : "white"
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                 }
-                
+
             }
 
             //rpm value indicator
