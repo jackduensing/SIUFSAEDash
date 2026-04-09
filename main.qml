@@ -23,7 +23,7 @@ Window{
         rotation: 90
         width: Screen.height
         height: Screen.width
-        anchors.fill: parent
+        anchors.centerIn: parent
         
 
         ColumnLayout{
