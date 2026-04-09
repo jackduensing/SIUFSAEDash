@@ -11,8 +11,7 @@ import loraDash
 #names from dbc file
 
 car_data_type = np.dtype([
-    ('timestamp', np.float64),
-    ('start_time', np.float32),   #holder for timestamping
+    ('seconds', np.int32),   #seconds ECU has been on
     ('rpm', np.float32),   #RPM
     ('clt', np.float32),   #Coolant Temp
     ('map', np.float32),   #MAP
@@ -30,8 +29,6 @@ mem_name = 'car_data'
 shared_container = shared_memory.SharedMemory(create=True, size=car_data_type.itemsize, name=mem_name)
 
 data = np.ndarray(shape=(1,), dtype=car_data_type, buffer=shared_container.buf)
-
-data['start_time'] = time.monotonic()       #starts the timestampign process, NOTE: only works in comparison to other time.monotonic
 
 lock = Lock()
 

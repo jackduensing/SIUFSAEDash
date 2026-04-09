@@ -9,7 +9,7 @@ def run(mem_name, car_type, lock):
 
     print("Starting CAN")
 
-    fields = ('rpm', 'clt', 'map', 'mat', 'tps', 'adv_deg', 'afrtgt1', 'AFR1', 'batt')
+    fields = ('seconds', 'rpm', 'clt', 'map', 'mat', 'tps', 'adv_deg', 'afrtgt1', 'AFR1', 'batt', 'gear')
 
     #attaches to shared memory
     shared_container = shared_memory.SharedMemory(name = mem_name)
@@ -37,7 +37,6 @@ def run(mem_name, car_type, lock):
                         if key in fields:  
                             print(f"{key}:{value}")                                            
                             data[0][key] = value
-                            data["timestamp"] = time.monotonic() - data["start_time"]       #uses the start_time field to create a "time since start"
                         
         except cantools.database.DecodeError as e: #frame is not in dbc file, continue, log
             with open("log.txt", "a") as file:

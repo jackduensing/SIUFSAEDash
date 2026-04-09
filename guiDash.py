@@ -18,6 +18,7 @@ class Backend(QObject):
     afrChanged = pyqtSignal(int, arguments=['AFR1'])
     battChanged = pyqtSignal(float, arguments=['batt'])
     gearChanged = pyqtSignal(int, arguments=['gear'])
+    secondsChanged = pyqtSignal(int, arguments=['seconds'])
 
     def __init__(self, data, lock):
         super().__init__()
@@ -33,6 +34,8 @@ class Backend(QObject):
         self._afr = 0
         self._batt = 0
         self._gear = 0
+        self._seconds = 0
+
 
         self._last_rpm = 0
         self._last_clt = 0
@@ -44,6 +47,7 @@ class Backend(QObject):
         self._last_afr = 0
         self._last_batt = 0
         self._last_gear = 0
+        self._last_seconds = 0
 
         self._timer = QTimer(self)
         self._timer.timeout.connect(self._poll)
@@ -51,6 +55,7 @@ class Backend(QObject):
 
     def _poll(self):
         with self._lock:
+            seconds = float(self._data[0]["seconds"])
             rpm = float(self._data[0]["rpm"])
             clt = float(self._data[0]["clt"])
             map_ = float(self._data[0]["map"])
@@ -61,6 +66,11 @@ class Backend(QObject):
             afr = float(self._data[0]["AFR1"])
             batt = float(self._data[0]["batt"])
             gear = float(self._data[0]["gear"])
+
+        if abs(seconds - self._last_seconds) > 1e-3:
+            self._last_seconds = seconds
+            self._seconds = int(round(seconds))
+            self.secondsChanged.emit(seconds)
 
         if abs(rpm - self._last_rpm) > 1e-3:
             self._last_rpm = rpm
@@ -113,6 +123,10 @@ class Backend(QObject):
             self.gearChanged.emit(gear)
 
 
+    @pyqtProperty(int, notify=secondsChanged)
+    def rpm(self):
+        return self._seconds
+
     @pyqtProperty(int, notify=rpmChanged)
     def rpm(self):
         return self._rpm
@@ -146,7 +160,6 @@ class Backend(QObject):
         return self._afr
 
     @pyqtProperty(float, notify=battChanged)
-
     def batt(self):
         return self._batt
     

@@ -15,7 +15,7 @@ data = msg_obj.encode({
     "rpm": 3500,
     "pw2": 0,
     "pw1": 0,
-    "seconds": 0
+    "seconds": 25
 })
 
 message = can.Message(arbitration_id=msg_obj.frame_id, data=data)
