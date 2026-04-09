@@ -16,8 +16,8 @@ Window{
         anchors.fill: parent
         currentIndex: 0
 
-        page1 {}
-        page2 {}
+        Page1 {}
+        Page2 {}
 
     }
 

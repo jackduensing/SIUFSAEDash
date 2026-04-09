@@ -8,7 +8,7 @@ Window{
     id: root
     visible: true
     visibility: Window.FullScreen
-    title: "GUI"
+    title: "mainScreen"
 
     Timer{
         interval: 1000
