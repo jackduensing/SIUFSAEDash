@@ -11,6 +11,11 @@ Item{
             id: infoColumn
             anchors.fill: parent
 
+            Rectangle{
+                    id: secondsValueBox
+                    color: "transparent"
+                    Layout.fillWidth: true
+
                 Text{
                         id: secondsTextBox
                         Layout.fillWidth: true
@@ -21,8 +26,8 @@ Item{
                         minimumPixelSize: 10
                         horizontalAlignment: Text.AlignHCenter
                         verticalAlignment: Text.AlignVCenter
-    
                 }
+            }
 
                 Text{
                         id: rpmTextBox
