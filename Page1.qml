@@ -137,7 +137,7 @@ Item{
                     Text{
                         id: rpmTextBox
                         anchors.fill: parent
-                        color: "#800000"
+                        color: backend.rpm >= 10500 ? "red" : "black"
                         text: backend.rpm
                         fontSizeMode: Text.Fit
                         font.pixelSize: 1000
