@@ -3,13 +3,6 @@ import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 2.15
 
-Window{
-
-    id: root
-    visible: true
-    visibility: Window.FullScreen
-    title: "infoScreen"
-
     Item {
 
         id: rotateItem
@@ -21,9 +14,7 @@ Window{
         ColumnLayout {
 
             id: infoColumn
-            Layout.fillWidth: true
-            Layout.preferredHeight: Screen.width
-            Layout.maximumHeight: Screen.width
+            anchors.fill: parent
 
                 Text{
                         id: secondsTextBox

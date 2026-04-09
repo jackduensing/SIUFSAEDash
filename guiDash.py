@@ -114,7 +114,7 @@ class Backend(QObject):
 
         if abs(batt - self._last_batt) > 1e-3:
             self._last_batt = batt
-            self._batt = int(round(batt))
+            self._batt = round(batt, 1)
             self.battChanged.emit(batt)
 
         if abs(gear - self._last_gear) > 1e-3:
@@ -124,7 +124,7 @@ class Backend(QObject):
 
 
     @pyqtProperty(int, notify=secondsChanged)
-    def rpm(self):
+    def seconds(self):
         return self._seconds
 
     @pyqtProperty(int, notify=rpmChanged)
