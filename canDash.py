@@ -22,8 +22,6 @@ def run(mem_name, car_type, lock):
 
     while True:
         try:
-
-            print("waiting for message...")
             message = bus.recv()
             if message == None:     #returns none or message, if no message, skip
                 print(f"message returned none type")
@@ -34,8 +32,7 @@ def run(mem_name, car_type, lock):
 
                 with lock:
                     for key, value in decoded_data.items():
-                        if key in fields:  
-                            print(f"{key}:{value}")                                            
+                        if key in fields:                                             
                             data[0][key] = value
                         
         except cantools.database.DecodeError as e: #frame is not in dbc file, continue, log
