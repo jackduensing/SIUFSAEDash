@@ -19,10 +19,12 @@ Window{
 
     Item {
 
-        anchors.fill: parent
+        id: rotateItem
+        rotation: 90
         width: Screen.height
         height: Screen.width
-        rotation: 90
+        anchors.fill: parent
+        
 
         ColumnLayout{
             anchors.fill: parent
