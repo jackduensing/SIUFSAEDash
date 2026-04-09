@@ -20,6 +20,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: secondsTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -40,6 +41,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: rpmTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -61,6 +63,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: cltTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -82,6 +85,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: mapTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -103,6 +107,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: matTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -124,6 +129,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: tpsTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -145,6 +151,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: advTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -166,6 +173,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: afrtgtTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -186,6 +194,7 @@ Item{
                 Layout.preferredHeight: Screen.width * 0.1
                 Layout.maximumHeight: Screen.width * 0.1
                 Text{
+                        anchors.fill: parent
                         id: afrTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -207,6 +216,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: battTextBox
                         Layout.fillWidth: true
                         color: "#800000"
@@ -228,6 +238,7 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.1
 
                 Text{
+                        anchors.fill: parent
                         id: gearTextBox
                         Layout.fillWidth: true
                         color: "#800000"
