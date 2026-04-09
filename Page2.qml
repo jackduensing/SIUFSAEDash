@@ -47,5 +47,3 @@ import QtQuick.Layouts 2.15
 
 
     }
-
-}
