@@ -130,14 +130,14 @@ Item{
 
                 Rectangle{
                     id: rpmValueBox
-                    color: "transparent"
-                    Layout.fillWidth: true
+                    color: backend.rpm >= 10500 ? "red" : "transparent"
+                    Layout.fillWidth: truea
                     Layout.fillHeight: true
 
                     Text{
                         id: rpmTextBox
                         anchors.fill: parent
-                        color: backend.rpm >= 10500 ? "red" : "black"
+                        color: backend.rpm >= 10500 ? "white" : "#800000"
                         text: backend.rpm
                         fontSizeMode: Text.Fit
                         font.pixelSize: 1000
