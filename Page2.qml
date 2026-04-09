@@ -27,7 +27,7 @@ Window{
 
                 Text{
                         id: secondsTextBox
-                        anchors.fill: parent
+                        Layout.fillWidth: true
                         color: "#800000"
                         text: "Uptime: " + backend.seconds
                         fontSizeMode: Text.Fit
@@ -40,7 +40,7 @@ Window{
 
                 Text{
                         id: rpmTextBox
-                        anchors.fill: parent
+                        Layout.fillWidth: true
                         color: "#800000"
                         text: "RPM: " + backend.rpm
                         fontSizeMode: Text.Fit
