@@ -24,6 +24,7 @@ class Backend(QObject):
         super().__init__()
         self._data = data
         self._lock = lock
+        self._seconds = 0
         self._rpm = 0
         self._clt = 0
         self._map = 0
@@ -34,9 +35,9 @@ class Backend(QObject):
         self._afr = 0
         self._batt = 0
         self._gear = 0
-        self._seconds = 0
+        
 
-
+        self._last_seconds = 0
         self._last_rpm = 0
         self._last_clt = 0
         self._last_map = 0
@@ -47,7 +48,7 @@ class Backend(QObject):
         self._last_afr = 0
         self._last_batt = 0
         self._last_gear = 0
-        self._last_seconds = 0
+        
 
         self._timer = QTimer(self)
         self._timer.timeout.connect(self._poll)
