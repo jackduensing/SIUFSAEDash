@@ -3,6 +3,10 @@ import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 2.15
 
+Item{
+
+    id: page1root
+
     Timer{
         interval: 1000
         running: true
