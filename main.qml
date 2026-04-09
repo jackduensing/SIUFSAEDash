@@ -10,15 +10,24 @@ Window{
     visibility: Window.FullScreen
     title: "GUI"
 
-    SwipeView{
 
-        id: swipeRoot
-        anchors.fill: parent
-        currentIndex: 0
+    Item {
 
-        Page1 {}
-        Page2 {}
+        id: rotateItem
+        rotation: 90
+        width: Screen.height
+        height: Screen.width
+        anchors.centerIn: parent
 
+        SwipeView{
+
+            id: swipeRoot
+            anchors.fill: parent
+            currentIndex: 0
+
+            Page1 {}
+            Page2 {}
+
+        }
     }
-
 }

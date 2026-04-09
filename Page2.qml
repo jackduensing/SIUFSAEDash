@@ -3,13 +3,8 @@ import QtQuick.Controls 2.15
 import QtQuick.Window 2.15
 import QtQuick.Layouts 2.15
 
-    Item {
-
-        id: rotateItem
-        rotation: 90
-        width: Screen.height
-        height: Screen.width
-        anchors.centerIn: parent
+Item{
+    id: page2root
 
         ColumnLayout {
 
@@ -44,6 +39,4 @@ import QtQuick.Layouts 2.15
 
 
         }
-
-
-    }
+}

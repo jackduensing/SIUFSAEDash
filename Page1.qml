@@ -13,14 +13,6 @@ Item{
         repeat: true
         onTriggered: timeText.text = Qt.formatTime(new Date(), "hh:mm:ss")
     }
-
-    Item {
-
-        id: rotateItem
-        rotation: 90
-        width: Screen.height
-        height: Screen.width
-        anchors.centerIn: parent
         
 
         ColumnLayout{
@@ -303,5 +295,4 @@ Item{
                 Layout.maximumHeight: Screen.width * 0.025
             }
         }
-    }
 }
