@@ -35,8 +35,8 @@ Window{
                 id: rpmBar
                 spacing: 0
                 Layout.fillWidth: true
-                Layout.preferredHeight: Screen.height * 0.2
-                Layout.maximumHeight: Screen.height * 0.2
+                Layout.preferredHeight: Screen.width * 0.2
+                Layout.maximumHeight: Screen.width * 0.2
 
 
                 Rectangle{
@@ -93,8 +93,8 @@ Window{
             RowLayout{
                 id: rpmValueRow
                 Layout.fillWidth: true
-                Layout.preferredHeight: Screen.height * 0.3
-                Layout.maximumHeight: Screen.height * 0.3
+                Layout.preferredHeight: Screen.width * 0.3
+                Layout.maximumHeight: Screen.width * 0.3
 
                 Rectangle{
                     id: rpmValueBox
@@ -119,16 +119,16 @@ Window{
             //spacer
             Item{
                 Layout.fillWidth: true
-                Layout.preferredHeight: Screen.height * 0.1
-                Layout.maximumHeight: Screen.height * 0.1
+                Layout.preferredHeight: Screen.width * 0.1
+                Layout.maximumHeight: Screen.width * 0.1
             }  
 
             //others bar
             GridLayout{
                 id: othersRow
                 Layout.fillWidth: true
-                Layout.preferredHeight: Screen.height * 0.2
-                Layout.maximumHeight: Screen.height * 0.2
+                Layout.preferredHeight: Screen.width * 0.2
+                Layout.maximumHeight: Screen.width * 0.2
                 columns: 3
 
                 Rectangle{
@@ -249,16 +249,16 @@ Window{
             //spacer
             Item{
                 Layout.fillWidth: true
-                Layout.preferredHeight: Screen.height * 0.125
-                Layout.maximumHeight: Screen.height * 0.125
+                Layout.preferredHeight: Screen.width * 0.125
+                Layout.maximumHeight: Screen.width * 0.125
             }
 
             //time footer
             RowLayout{
                 id: timeRow
                 Layout.fillWidth: true
-                Layout.preferredHeight: Screen.height * 0.05
-                Layout.maximumHeight: Screen.height * 0.05
+                Layout.preferredHeight: Screen.width * 0.05
+                Layout.maximumHeight: Screen.width * 0.05
 
                 Rectangle{
                     id: timeBox
@@ -283,8 +283,8 @@ Window{
             //spacer
             Item{
                 Layout.fillWidth: true
-                Layout.preferredHeight: Screen.height * 0.025
-                Layout.maximumHeight: Screen.height * 0.025
+                Layout.preferredHeight: Screen.width * 0.025
+                Layout.maximumHeight: Screen.width * 0.025
             }
         }
     }
