@@ -1,2 +1,4 @@
 BlackBoxTest.txt
 WhiteBoxTest.txt
+/__pycache/*
+simpleMS3.dbc
