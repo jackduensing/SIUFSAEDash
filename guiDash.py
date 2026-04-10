@@ -4,7 +4,7 @@ import sys
 
 from PyQt6.QtGui import QGuiApplication
 from PyQt6.QtQml import QQmlApplicationEngine
-from PyQt6.QtCore import QTimer, QObject, pyqtSignal, pyqtProperty
+from PyQt6.QtCore import QTimer, QObject, pyqtSignal, pyqtProperty, Qt
 
 class Backend(QObject):
 
@@ -182,7 +182,7 @@ def run(mem_name, car_type, lock):
 
     app = QGuiApplication(sys.argv)
 
-    app.setCursorVisible(False)
+    app.setOverrideCursor(Qt.CursorShape.BlankCursor)
 
     engine = QQmlApplicationEngine()
 
