@@ -131,7 +131,7 @@ Item{
                 Rectangle{
                     id: rpmValueBox
                     color: backend.rpm >= 10500 ? "red" : "transparent"
-                    Layout.fillWidth: truea
+                    Layout.fillWidth: true
                     Layout.fillHeight: true
 
                     Text{
