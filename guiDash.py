@@ -181,6 +181,9 @@ def run(mem_name, car_type, lock):
     data = np.ndarray(shape=(1,), dtype=car_type, buffer=shared_container.buf)
 
     app = QGuiApplication(sys.argv)
+
+    app.setCursorVisible(False)
+
     engine = QQmlApplicationEngine()
 
     backend = Backend(data, lock)
