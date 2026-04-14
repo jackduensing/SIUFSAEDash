@@ -38,7 +38,7 @@ log_flag = 0
 
 if os.path.exists(log_path):
     log_flag = 1
-    start_row = pd.DataFrame([1,1,1,1,1,1,1,1,1,1,1])
+    start_row = pd.DataFrame([1])
 
     try:
         start_row.to_csv(log_path + "/log.csv", mode='a', index=False, header=False)
