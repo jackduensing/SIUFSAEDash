@@ -17,12 +17,9 @@ def run(mem_name, car_type, lock, log_flag):
     file_path = "/mnt/logUSB"
 
     while True:
-        previous_sec = 0 
-        print(f"{previous_sec}\t {data[0]["seconds"]}")
-        if data[0]["seconds"] != previous_sec:
-            with lock: 
-                toSave = pd.DataFrame(data)
-            previous_sec = data[0]["seconds"]
+        time.sleep(1)
+        with lock: 
+            toSave = pd.DataFrame(data)
 
         if os.path.exists(file_path):
             try:
