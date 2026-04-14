@@ -32,32 +32,40 @@ data = np.ndarray(shape=(1,), dtype=car_data_type, buffer=shared_container.buf)
 
 lock = Lock()
 
-canDash = Process(target=canDash.run, args=(mem_name, car_data_type, lock))
+log_path = "/mnt/logUSB"
+log_flag = 0
+
+if os.path.exists(log_path):
+    log_flag = 1
+    print("Starting with logging")
+
+
+canDash = Process(target=canDash.run, args=(mem_name, car_data_type, lock, log_flag))
 guiDash = Process(target=guiDash.run, args=(mem_name, car_data_type, lock))
-#logDash = Process(target=logDash.run, args=(mem_name, car_data_type, lock))
+logDash = Process(target=logDash.run, args=(mem_name, car_data_type, lock, log_flag))
 #loraDash = Process(target=loraDash.run, args=(mem_name, car_data_type, lock))
 
 
 print("Starting Processes")
 canDash.start()
 guiDash.start()
-#logDash.start()
+logDash.start()
 #loraDash.start()
 
 
 try:
     canDash.join()
     guiDash.join()
-    #logDash.join()
+    logDash.join()
     #loraDash.join()
 except KeyboardInterrupt:
     canDash.terminate()
     guiDash.terminate()
-    #logDash.terminate()
+    logDash.terminate()
     #loraDash.terminate()
     canDash.join()
     guiDash.join()
-    #logDash.join()
+    logDash.join()
     #loraDash.join()
 
 

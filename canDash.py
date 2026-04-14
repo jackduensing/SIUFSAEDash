@@ -5,7 +5,7 @@ import can
 import os
 import cantools
 
-def run(mem_name, car_type, lock):
+def run(mem_name, car_type, lock, log_flag):
 
     print("Starting CAN")
 
@@ -37,7 +37,10 @@ def run(mem_name, car_type, lock):
                         
         except cantools.database.DecodeError as e: #frame is not in dbc file, continue, log
             with open("log.txt", "a") as file:
-                print(f"{e}\n", file=file)       
+                print(f"{e}\n", file=file)
+            if log_flag == 1:
+                with open("/mnt/logUSB/log.txt", "a") as file:
+                    print(f"{e}\n", file=file)  
             continue
 
         except KeyboardInterrupt:
@@ -46,6 +49,9 @@ def run(mem_name, car_type, lock):
         except Exception as e:
             with open("log.txt", "a") as file:
                 print(f"{e}\n", file=file)
+            if log_flag == 1:
+                with open("/mnt/logUSB/log.txt", "a") as file:
+                    print(f"{e}\n", file=file) 
             break
 
     shared_container.close()

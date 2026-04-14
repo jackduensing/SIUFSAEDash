@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import os
 
-def run(mem_name, car_type, lock):
+def run(mem_name, car_type, lock, log_flag):
     print(f"From process log, recieved {mem_name}")
 
     #attaches to shared memory
@@ -14,28 +14,36 @@ def run(mem_name, car_type, lock):
     data = np.ndarray(shape=(1,), dtype=car_type, buffer=shared_container.buf)
 
     #todo: once I have the flashdrive, create a permanent mount point
-    file_path = "dummy\path\to\drive"
+    file_path = "/mnt/logUSB"
 
     while True:
-        time.sleep(2)       #every 2 seconds, log
-        with lock: 
-            toSave = pd.DataFrame(data)
+        previous_sec = 0 
+        if data[0]["seconds"] != previous_sec:
+            with lock: 
+                toSave = pd.DataFrame(data)
+            previous_sec = data[0]["seconds"]
 
         if os.path.exists(file_path):
             try:
-                toSave.to_csv(file_path, mode='a', index=False, header=False)
+                toSave.to_csv(file_path + "/log.csv", mode='a', index=False, header=False)
             except Exception as e:
                 with open("log.txt", "a") as file:
                     print(f"{e}\n", file=file)
+                if log_flag == 1:
+                    with open("/mnt/logUSB/log.txt", "a") as file:
+                        print(f"{e}\n", file=file) 
                 break
             except KeyboardInterrupt:
                 break
         else:
             try:
-                toSave.to_csv(file_path, mode='a', index=False, header=True)     #if the file does not exist in the drive, append with the column names
+                toSave.to_csv(file_path + "/log.csv", mode='a', index=False, header=True)     #if the file does not exist in the drive, append with the column names
             except Exception as e:
                 with open("log.txt", "a") as file:
                     print(f"{e}\n", file=file)
+                if log_flag == 1:
+                    with open("/mnt/logUSB/log.txt", "a") as file:
+                        print(f"{e}\n", file=file) 
                 break
             except KeyboardInterrupt:
                 break
