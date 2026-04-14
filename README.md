@@ -56,17 +56,19 @@ When plugging in the USB to CAN, we must assure that it is configured correctly.
 
 from usb-devices
 
-T:  Bus=01 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  4 Spd=12   MxCh= 0
-D:  Ver= 2.00 Cls=00(>ifc ) Sub=00 Prot=00 MxPS=64 #Cfgs=  1
-P:  Vendor=1d50 ProdID=606f Rev=00.00
-S:  Manufacturer=canable.io
-S:  Product= ==canable gs_usb==
-S:  SerialNumber=004F002D4E56511520363434
-C:  #Ifs= 2 Cfg#= 1 Atr=80 MxPwr=150mA
-I:  If#= 0 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=ff Prot=ff Driver=gs_usb
-E:  Ad=02(O) Atr=02(Bulk) MxPS=  32 Ivl=0ms
-E:  Ad=81(I) Atr=02(Bulk) MxPS=  32 Ivl=0ms
-I:  If#= 1 Alt= 0 #EPs= 0 Cls=fe(app. ) Sub=01 Prot=01 Driver=(none)
+'''
+    T:  Bus=01 Lev=01 Prnt=01 Port=00 Cnt=01 Dev#=  4 Spd=12   MxCh= 0
+    D:  Ver= 2.00 Cls=00(>ifc ) Sub=00 Prot=00 MxPS=64 #Cfgs=  1
+    P:  Vendor=1d50 ProdID=606f Rev=00.00
+    S:  Manufacturer=canable.io
+    S:  Product=canable gs_usb
+    S:  SerialNumber=004F002D4E56511520363434
+    C:  #Ifs= 2 Cfg#= 1 Atr=80 MxPwr=150mA
+    I:  If#= 0 Alt= 0 #EPs= 2 Cls=ff(vend.) Sub=ff Prot=ff Driver=gs_usb
+    E:  Ad=02(O) Atr=02(Bulk) MxPS=  32 Ivl=0ms
+    E:  Ad=81(I) Atr=02(Bulk) MxPS=  32 Ivl=0ms
+    I:  If#= 1 Alt= 0 #EPs= 0 Cls=fe(app. ) Sub=01 Prot=01 Driver=(none)
+'''
 
 from lsusb -t
 
