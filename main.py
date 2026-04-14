@@ -1,6 +1,7 @@
 import os
 from multiprocessing import shared_memory, Process, Lock
 import numpy as np
+import pandas as pd
 import time
 
 import canDash
@@ -37,8 +38,15 @@ log_flag = 0
 
 if os.path.exists(log_path):
     log_flag = 1
-    print("Starting with logging")
+    start_row = pd.DataFrame([1,1,1,1,1,1,1,1,1,1,1])
 
+    try:
+        start_row.to_csv(log_path + "/log.csv", mode='a', index=False, header=False)
+    except Exception as e:
+        with open("log.txt", "a") as file:
+            print(f"{e}\n", file=file)
+        with open("/mnt/logUSB/log.txt", "a") as file:
+            print(f"{e}\n", file=file) 
 
 canDash = Process(target=canDash.run, args=(mem_name, car_data_type, lock, log_flag))
 guiDash = Process(target=guiDash.run, args=(mem_name, car_data_type, lock))
