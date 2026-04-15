@@ -39,10 +39,14 @@ log_flag = 0
 
 if os.path.exists(log_path):
     log_flag = 1
-    start_row = pd.DataFrame([date.today()])
+    
+    fields = ('seconds', 'rpm', 'clt', 'map', 'mat', 'tps', 'adv_deg', 'afrtgt1', 'AFR1', 'batt', 'gear')
+    start_row = pd.DataFrame(columns=fields)
+
+    start_row["time"] = pd.DataFrame([date.today()])
 
     try:
-        start_row.to_csv(log_path + "/log.csv", mode='a', index=False, header=False)
+        start_row.to_csv(log_path + "/log.csv", mode='a', index=False, header=True)
     except Exception as e:
         with open("/mnt/logUSB/log.txt", "a") as file:
             print(f"{e}\n", file=file) 
