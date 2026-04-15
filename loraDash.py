@@ -32,8 +32,6 @@ def run(mem_name, car_type, lock):
             try:
                 lora.send(data)
             except Exception as e:
-                with open("log.txt", "a") as file:
-                    print(f"{e}\n", file=file)
                 break
             
             except KeyboardInterrupt:

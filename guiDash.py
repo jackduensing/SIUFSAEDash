@@ -172,8 +172,6 @@ class Backend(QObject):
 
 def run(mem_name, car_type, lock):
 
-    print("Starting GUI")
-
     #attaches to shared memory
     shared_container = shared_memory.SharedMemory(name = mem_name)
 

@@ -56,8 +56,6 @@ guiDash = Process(target=guiDash.run, args=(mem_name, car_data_type, lock))
 logDash = Process(target=logDash.run, args=(mem_name, car_data_type, lock, log_flag))
 #loraDash = Process(target=loraDash.run, args=(mem_name, car_data_type, lock))
 
-
-print("Starting Processes")
 canDash.start()
 guiDash.start()
 logDash.start()
