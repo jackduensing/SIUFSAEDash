@@ -20,8 +20,9 @@ def run(mem_name, car_type, lock, log_flag):
         time.sleep(1)
         try:
             with lock:
+                now = datetime.now()
                 toSave = pd.DataFrame(data)
-                toSave["time"] = datetime.now.strftime("%H:%M:%S")
+                toSave["time"] = now.strftime("%H:%M:%S")
         except Exception as e:
                 with open("/mnt/logUSB/log.txt", "a") as file:
                     print(f"{e}\n", file=file) 
