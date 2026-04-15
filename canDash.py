@@ -36,8 +36,6 @@ def run(mem_name, car_type, lock, log_flag):
                             data[0][key] = value
                         
         except cantools.database.DecodeError as e: #frame is not in dbc file, continue, log
-            with open("log.txt", "a") as file:
-                print(f"{e}\n", file=file)
             if log_flag == 1:
                 with open("/mnt/logUSB/log.txt", "a") as file:
                     print(f"{e}\n", file=file)  
@@ -47,8 +45,6 @@ def run(mem_name, car_type, lock, log_flag):
             break
 
         except Exception as e:
-            with open("log.txt", "a") as file:
-                print(f"{e}\n", file=file)
             if log_flag == 1:
                 with open("/mnt/logUSB/log.txt", "a") as file:
                     print(f"{e}\n", file=file) 

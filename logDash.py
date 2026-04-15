@@ -3,6 +3,7 @@ from multiprocessing import shared_memory
 import numpy as np
 import pandas as pd
 import os
+from datetime import datetime
 
 def run(mem_name, car_type, lock, log_flag):
     print(f"From process log, recieved {mem_name}")
@@ -20,13 +21,12 @@ def run(mem_name, car_type, lock, log_flag):
         time.sleep(1)
         with lock: 
             toSave = pd.DataFrame(data)
+            toSave["time"] = datetime.now.strftime("%H:%M:%S")
 
         if os.path.exists(file_path):
             try:
                 toSave.to_csv(file_path + "/log.csv", mode='a', index=False, header=False)
             except Exception as e:
-                with open("log.txt", "a") as file:
-                    print(f"{e}\n", file=file)
                 if log_flag == 1:
                     with open("/mnt/logUSB/log.txt", "a") as file:
                         print(f"{e}\n", file=file) 
@@ -37,8 +37,6 @@ def run(mem_name, car_type, lock, log_flag):
             try:
                 toSave.to_csv(file_path + "/log.csv", mode='a', index=False, header=True)     #if the file does not exist in the drive, append with the column names
             except Exception as e:
-                with open("log.txt", "a") as file:
-                    print(f"{e}\n", file=file)
                 if log_flag == 1:
                     with open("/mnt/logUSB/log.txt", "a") as file:
                         print(f"{e}\n", file=file) 

@@ -3,6 +3,7 @@ from multiprocessing import shared_memory, Process, Lock
 import numpy as np
 import pandas as pd
 import time
+from datetime import date
 
 import canDash
 import guiDash
@@ -38,13 +39,11 @@ log_flag = 0
 
 if os.path.exists(log_path):
     log_flag = 1
-    start_row = pd.DataFrame([1])
+    start_row = pd.DataFrame([date.today()])
 
     try:
         start_row.to_csv(log_path + "/log.csv", mode='a', index=False, header=False)
     except Exception as e:
-        with open("log.txt", "a") as file:
-            print(f"{e}\n", file=file)
         with open("/mnt/logUSB/log.txt", "a") as file:
             print(f"{e}\n", file=file) 
 
@@ -91,26 +90,9 @@ shared_container = shared_memory.SharedMemory(name = mem_name)
 #create the holding arrray that uses the shared container
 data = np.ndarray(shape=(1,), dtype=type, buffer=shared_container.buf)
 
-then can access with name[field]
-ex:     #data['RPM'] = 5000.00'
+then can access with
+ex:     value = data[0]["rpm"]
 assignment to vars with
-ex:     #rpm = data['RPM'][0]
+ex:     data[0]["rpm"] = value
 after locking to prevent race
-'''
-
-'''
-CAN Fields from car, not exhaustive but complete
-
-Runtime
-Manifold Air Pressure
-RPM
-Coolant Temp
-Throttle Position
-Manifold Air Temp
-Spark Advance
-Air Fuel Ratio Target
-Air Fuel Ratio
-Battery Voltage
-Vehicle Speed           #not able
-GPS Coordinates         #not able
 '''
