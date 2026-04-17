@@ -1,5 +1,36 @@
 # SIUFSAEDash
-Files/docs pertaining to the 2026 SIU FSAE Dashboard system with RF LoRa telemetry 
+
+Files/docs pertaining to the 2026 Saluki Formula Racing FSAE Dashboard system with RF LoRa telemetry by Jack Duensing
+
+Note: As of May 2026 the LoRa is not implemented, steps taken to implement will be included but have not been tested.
+
+## Abstract
+
+The goal of this group is to create a system that takes in CANBUS data from the vehicle and displays the most relevant information to the driver. 
+The onboard display is easily readable to persons outside of the project. This information is very valuable for testing of the car and understanding its status. 
+Validation is a large part of the Formula SAE competition; this system provides an easy way to understand the status of the car and aids in troubleshooting.
+A second page of the GUI enabled through the touchscreen dispay allows for instantaneous readouts of all dashboard collected data in one place for a "one stop shop" for the car's status 
+Thorough documentation allows for ease of knowledge transfer to future members of the team. The new dashboard system allows for an enhanced, personalized, driving experience.
+
+## Features
+
+- Dashboard GUI
+    - Simple, easy to read dispay makes understanding the car's status intuitive 
+    - The RPM overrev warning turns a portion of the screen red for an easy cue to the driver that the car is nearing redline
+    - The second page of the display shows all dash read data points for a more desciptive view
+    - The second page is accessed with and up and down swipe to mitigate accidental swiping while driving
+- CAN frame reading
+    - CAN frame reading code is simple, compact, and stable
+- Modular code design
+    - Code was designed with modularity in mind
+    - Allows easy addition of new fields read from the CANBUS into the system
+    - GUI code written with QML provides stable and easily interpretable GUIs specifically designed for this usecase 
+
+# Documentation
+
+Below is the documentation/installation guide, it is specific to my setup, but is widely applicable.
+
+Please feel free to build off of this system, and I encourage customization
 
 ## Grocery List
 
@@ -7,6 +38,9 @@ Files/docs pertaining to the 2026 SIU FSAE Dashboard system with RF LoRa telemet
     - All development was done on Kubuntu 24.04
 - Raspberry Pi 4B 2GB RAM
     - Most likely overkill for this application, however future proofing and screen compatibility was desired
+- Micro SD card for Pi storage
+- CAN Module
+    - I am using the MCP2515_CAN, very standard module
 - LoRa USB Reciever
 - LoRa Transmitter
 - SMA Antenna Adapter
@@ -18,6 +52,8 @@ Files/docs pertaining to the 2026 SIU FSAE Dashboard system with RF LoRa telemet
 - Some permanent connection solution, many options exist for this
 - Male USB to CAN Adapter
     - Used for sending test frames to the dash
+- a USB drive for logging
+    - size is not an issue, with the data being held in a CSV, 32Gb holds about 700 million rows of logging
 
 ## Installation
 
@@ -49,6 +85,10 @@ We must install the CAN Module, the LoRa Module, and the Screen. Here is the pin
                             []GND        SPI1 SCLK[] []LoRa Module SCK
 
         Screen Display In[] []Display out
+
+CAN module set up
+- Be sure to jump the 120 ohm terminating resistor
+- From the car be sure to connect the CAN High and CAN Low along with a shared ground between the ECU and the CAN Module
 
 ### Test Computer Side Hardware/Config
 
@@ -121,7 +161,7 @@ Run these lines in the terminal
 Next to mount the USB drive for logging
 
 - plug in the USB drive and use `sudo blkid` to find the UUID and file system type
-- create a directory in /mnt/ that the drive will always mount to
+- create a directory in /mnt/ that the drive will always mount to, I named mine "usb", that is reflected below
 - backup your fstab file with `sudo cp /etc/fstab /etc/fstab.bak`
 - now make the following change adding the line below to the fstab file located at /etc/fstab
     - `UUID=YOURUUID /mnt/usb YOURFILESYSTEMTYPE nofail,noatime 0 0`
@@ -193,6 +233,7 @@ WantedBy=multi-user.target
 
 Then reload the service list with
 - `sudo systemctl daemon-reload`
+
 And enable the service with
 - `sudo systemctl enable dash.service`
 
@@ -219,6 +260,7 @@ WantedBy=sysinit.target
 ```
 Dont forget to reload the service list with
 - `sudo systemctl daemon-reload`
+
 And enable the service with
 - `sudo systemctl enable dash.service`
 
@@ -226,15 +268,44 @@ Now on reboot you should have a fully functional system
 
 ### Troubleshooting
 
-For system services you can view the logs with
-- `sudo journalctl -u servicename.service.`
+For system services issues you can view the logs with
+- `sudo journalctl -u servicename.service`
 
 For issues with the python itself, the code is set up to write all logs to the mounted USB, be sure to have that configured to read those logs
 
 Any error message displaying something like "device or resource busy" is most likely the problem of enabling can0 twice, this has no bearing on the system, just a system notice.
 
+There is a known issue with possible file corruption upon loss of power to the Pi. This is mitigated by turning on the overlay file system in `sudo raspi-config` -> Performance options -> Overlay File System (overlay for both)
+- This enables, in essence, a read only file system
+- All system writes are redirected to RAM, which is purged on loss of power
+- This must be turned off before pulling from the repo or updating any files on the disc of the Pi
+
 ## Usage
 
+After setting up of all the services, usage is basically turn on the power
 
+However there are some useful notes
+- The check for the logging drive occurs before start up of the GUI
+    - Make sure it is plugged in before power on
+- A second page exists to see all dash collected data in one place in real time as instantaneous values
+    - Swiping UP and DOWN on the screen changes between these pages
+    - This is a safety feature intended to mitigate the chance of swiping to the non critical page while driving 
+
+Sending test frames to the system using the USB to CAN adapter that we set up before
+- test.py within the repo is a dev program used to generate the bash command to send a frame
+- It is most likely in a random state of generating an entire bash script used for testing
+
+General workflow of test.py is as follows
+- load the database file
+- get a message object with the specific name of the data you want to send
+    - best done by simply combing over the database file
+- using the encode method of the message object, add data
+    - all fields must be filled with some value for a valid frame
+- create a message with the object and the data
+- print the message and copy to the command line
+- Note: there is most certainly a way to get this to run in the terminal directly, but my system was being finicky and I don't mind a good copy paste every once in a while
+
+The included .dbc file (database file) is for the ECU the team is running currently
+- MS3 Pro Evo+ HC
 
 ##
